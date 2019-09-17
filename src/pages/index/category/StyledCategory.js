@@ -35,6 +35,15 @@ const CateContainer = styled.div `
         border-radius: .15rem;
         z-index: 9999;
         background: #fff;
+        transition: all 300ms;
+      }
+
+      &.left::before {
+        transform: translate(0, 0);
+      }
+
+      &.right::before {
+        transform: translate(100%, 0);
       }
     }
   }
