@@ -8,4 +8,12 @@ export default class Map extends Component {
       </div>
     )
   }
+
+  componentDidMount() {
+    console.log(0)
+  }
+  
+  componentDidUpdate() {
+    console.log(1)
+  }
 }

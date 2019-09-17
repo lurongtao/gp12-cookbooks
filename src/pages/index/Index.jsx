@@ -72,6 +72,7 @@ export default class Index extends PureComponent {
           tintColor="#000"
           barTintColor="white"
           hidden={this.state.hidden}
+          prerenderingSiblingsNumber={0}
         >
           {
             tabList.map((value, index) => {

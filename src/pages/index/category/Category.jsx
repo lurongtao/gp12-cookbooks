@@ -16,6 +16,13 @@ import Cate from './component/Category'
 import Material from './component/Material'
 
 class Category extends PureComponent {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    let pathname = nextProps.location.pathname
+    return {
+      dir: pathname === '/category' ? 'left' : 'right'
+    }
+  }
+
   state = {
     dir: 'left'
   }
@@ -24,9 +31,9 @@ class Category extends PureComponent {
     return (
       <CateContainer>
         <header>
-          <SlideContainer className={this.props.location.pathname === '/category' ? 'left' : 'right'}>
-            <li onClick={() => this.handleClick('left')} className={this.props.location.pathname === '/category' ? 'active' : ''}>分类</li>
-            <li onClick={() => this.handleClick('right')} className={this.props.location.pathname === '/material' ? 'active' : ''}>食材</li>
+          <SlideContainer className={this.state.dir}>
+            <li onClick={() => this.handleClick('left')} className={this.state.dir === 'left' ? 'active' : ''}>分类</li>
+            <li onClick={() => this.handleClick('right')} className={this.state.dir === 'right' ? 'active' : ''}>食材</li>
           </SlideContainer>
         </header>
         <Switch>
