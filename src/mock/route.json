@@ -1,4 +1,5 @@
 {
   "/api/swiper": "/swiper",
-  "/api/hotcate": "/hotcate"
+  "/api/hotcate": "/hotcate",
+  "/api/category": "/cate"
 }

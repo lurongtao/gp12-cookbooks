@@ -2,17 +2,19 @@ import React, { Component } from 'react'
 
 import {
   SearchContainer,
-  BorderedContainer
+  BorderedContainer,
+  NoneBorderContainer
 } from './StyledSearch'
 
 export default class Search extends Component {
   render() {
+    const BorderContainer = this.props.hasBorder ? BorderedContainer : NoneBorderContainer
     return (
       <SearchContainer {...this.props}>
-        <BorderedContainer {...this.props}>
+        <BorderContainer {...this.props}>
           <i>&#xe63a;</i>
           <input type="text" placeholder="想吃什么搜这里，如川菜"/>
-        </BorderedContainer>
+        </BorderContainer>
       </SearchContainer>
     )
   }

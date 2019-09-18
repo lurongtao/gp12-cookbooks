@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 
+import { MapContainer } from './StyledMap'
+
 export default class Map extends Component {
   render() {
     return (
-      <div>
-        map
-      </div>
+      <MapContainer>
+        <iframe title="map" src="/map.html"></iframe>
+      </MapContainer>
     )
   }
 
   componentDidMount() {
-    console.log(0)
+    console.log(this)
   }
   
   componentDidUpdate() {
-    console.log(1)
   }
 }

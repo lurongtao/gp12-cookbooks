@@ -15,6 +15,8 @@ import {
 import Cate from './component/Category'
 import Material from './component/Material'
 
+import Search from 'components/search/Search'
+
 class Category extends PureComponent {
   static getDerivedStateFromProps(nextProps, prevState) {
     let pathname = nextProps.location.pathname
@@ -36,6 +38,7 @@ class Category extends PureComponent {
             <li onClick={() => this.handleClick('right')} className={this.state.dir === 'right' ? 'active' : ''}>食材</li>
           </SlideContainer>
         </header>
+        <Search outerBg="#fff" innerBg="#f5f5f5" hasBorder={false}></Search>
         <Switch>
           <Route path="/category" component={Cate}></Route>
           <Route path="/material" component={Material}></Route>

@@ -5,9 +5,13 @@ import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter as Router } from 'react-router-dom'
 
+import { MapProvider } from './context/MapContext'
+
 ReactDOM.render(
   <Router>
-    <App />
+    <MapProvider>
+      <App />
+    </MapProvider>
   </Router>, 
   document.getElementById('root')
 );

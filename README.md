@@ -1,3 +1,13 @@
+## 架构
+- SPA(single page application)
+- React
+- React Router 4
+- fetch
+- json-server
+- antd-mobile
+- CRA(create-react-app)/react-app-rewired/customize-cra
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

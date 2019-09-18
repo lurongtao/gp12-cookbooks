@@ -16,6 +16,18 @@ import Category from './category/Category'
 import Map from './map/Map'
 import Profile from './profile/Profile'
 
+import { MapConsumer } from '../../context/MapContext'
+
+let mapData = {
+  title: '美食地图',
+  key: 'map',
+  icons: {
+    icon: location,
+    selectedIcon: locationActive
+  },
+  component: Map
+}
+
 const tabList = [
   {
     title: '菜谱大全',
@@ -36,15 +48,6 @@ const tabList = [
     component: Category
   },
   {
-    title: '美食地图',
-    key: 'map',
-    icons: {
-      icon: location,
-      selectedIcon: locationActive
-    },
-    component: Map
-  },
-  {
     title: '更多',
     key: 'profile',
     icons: {
@@ -59,52 +62,67 @@ export default class Index extends PureComponent {
   constructor() {
     super()
     this.state = {
-      selectedTab: 'category',
+      selectedTab: 'profile',
       hidden: false,
       fullScreen: true,
     }
   }
+
   render() {
     return (
-      <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
-        <TabBar
-          unselectedTintColor="#949494"
-          tintColor="#000"
-          barTintColor="white"
-          hidden={this.state.hidden}
-          prerenderingSiblingsNumber={0}
-        >
-          {
-            tabList.map((value, index) => {
-              return <TabBar.Item
-                title={value.title}
-                key={value.key}
-                icon={<div style={{
-                  width: '22px',
-                  height: '22px',
-                  background: `url(${value.icons.icon}) center center /  21px 21px no-repeat` }}
-                />
-                }
-                selectedIcon={<div style={{
-                  width: '22px',
-                  height: '22px',
-                  background: `url(${value.icons.selectedIcon}) center center /  21px 21px no-repeat` }}
-                />
-                }
-                selected={this.state.selectedTab === value.key}
-                onPress={() => {
-                  this.setState({
-                    selectedTab: value.key,
-                  });
-                }}
-                data-seed="logId"
-              >
-                {<value.component></value.component>}
-              </TabBar.Item>
-            })
+      <MapConsumer>
+        {
+          (value) => {
+            if (value.isShowMap && tabList.length <= 3) {
+              tabList.splice(2, 0, mapData)
+            } else if (tabList.length > 3) {
+              tabList.splice(2, 1)
+            }
+
+            return (
+              <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
+                <TabBar
+                  unselectedTintColor="#949494"
+                  tintColor="#000"
+                  barTintColor="white"
+                  hidden={this.state.hidden}
+                  prerenderingSiblingsNumber={0}
+                >
+                  {
+                    tabList.map((value, index) => {
+                      return <TabBar.Item
+                        title={value.title}
+                        key={value.key}
+                        icon={<div style={{
+                          width: '22px',
+                          height: '22px',
+                          background: `url(${value.icons.icon}) center center /  21px 21px no-repeat` }}
+                        />
+                        }
+                        selectedIcon={<div style={{
+                          width: '22px',
+                          height: '22px',
+                          background: `url(${value.icons.selectedIcon}) center center /  21px 21px no-repeat` }}
+                        />
+                        }
+                        selected={this.state.selectedTab === value.key}
+                        onPress={() => {
+                          this.setState({
+                            selectedTab: value.key,
+                          });
+                        }}
+                        data-seed="logId"
+                      >
+                        {<value.component></value.component>}
+                      </TabBar.Item>
+                    })
+                  }
+                </TabBar>
+              </div>
+            )
           }
-        </TabBar>
-      </div>
+        }
+      </MapConsumer>
     )
   }
 }

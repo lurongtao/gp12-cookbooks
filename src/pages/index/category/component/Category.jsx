@@ -1,11 +1,44 @@
 import React, { Component } from 'react'
 
+import Cate from 'components/category/Category'
+
+import http from 'utils/http'
+import BScroll from 'better-scroll'
+
 export default class Category extends Component {
+  state = {
+    defaultNav: '热门',
+    cateList: {}
+  }
+
   render() {
-    return (
-      <div>
-        Category
-      </div>
-    )
+    return <Cate 
+      data={this.state.cateList} 
+      defaultNav={this.state.defaultNav}
+      onNavClick={this.handleClick}
+    ></Cate>
+  }
+
+  async componentDidMount() {
+    let result = await http.get({
+      url: '/api/category'
+    })
+
+    this.setState({
+      cateList: result.data.category
+    })
+
+    new BScroll('#menu_left', {
+      click: true
+    })
+    new BScroll('#menu_right', {
+      click: true
+    })
+  }
+
+  handleClick = (value) => {
+    this.setState({
+      defaultNav: value
+    })
   }
 }

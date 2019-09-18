@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import border from 'components/styled/border.js'
 
 const CateContainer = styled.div `
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   header {
     height: .44rem;
     background: #ee742f;

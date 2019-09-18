@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd-mobile": "^2.3.1",
+    "better-scroll": "^1.15.2",
     "http-proxy-middleware": "^0.20.0",
     "react": "16.8",
     "react-dom": "16.8",
