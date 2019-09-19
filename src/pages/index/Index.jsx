@@ -18,7 +18,7 @@ import Profile from './profile/Profile'
 
 import { MapConsumer } from '../../context/MapContext'
 
-let mapData = {
+const mapData = {
   title: '美食地图',
   key: 'map',
   icons: {
@@ -75,7 +75,7 @@ export default class Index extends PureComponent {
           (value) => {
             if (value.isShowMap && tabList.length <= 3) {
               tabList.splice(2, 0, mapData)
-            } else if (tabList.length > 3) {
+            } else if (!value.isShowMap && tabList.length > 3) {
               tabList.splice(2, 1)
             }
 
@@ -90,31 +90,33 @@ export default class Index extends PureComponent {
                 >
                   {
                     tabList.map((value, index) => {
-                      return <TabBar.Item
-                        title={value.title}
-                        key={value.key}
-                        icon={<div style={{
-                          width: '22px',
-                          height: '22px',
-                          background: `url(${value.icons.icon}) center center /  21px 21px no-repeat` }}
-                        />
-                        }
-                        selectedIcon={<div style={{
-                          width: '22px',
-                          height: '22px',
-                          background: `url(${value.icons.selectedIcon}) center center /  21px 21px no-repeat` }}
-                        />
-                        }
-                        selected={this.state.selectedTab === value.key}
-                        onPress={() => {
-                          this.setState({
-                            selectedTab: value.key,
-                          });
-                        }}
-                        data-seed="logId"
-                      >
-                        {<value.component></value.component>}
-                      </TabBar.Item>
+                      return (
+                        <TabBar.Item
+                          title={value.title}
+                          key={value.key}
+                          icon={<div style={{
+                            width: '22px',
+                            height: '22px',
+                            background: `url(${value.icons.icon}) center center /  21px 21px no-repeat` }}
+                          />
+                          }
+                          selectedIcon={<div style={{
+                            width: '22px',
+                            height: '22px',
+                            background: `url(${value.icons.selectedIcon}) center center /  21px 21px no-repeat` }}
+                          />
+                          }
+                          selected={this.state.selectedTab === value.key}
+                          onPress={() => {
+                            this.setState({
+                              selectedTab: value.key,
+                            });
+                          }}
+                          data-seed="logId"
+                        >
+                          {<value.component></value.component>}
+                        </TabBar.Item>
+                      )
                     })
                   }
                 </TabBar>

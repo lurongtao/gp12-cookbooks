@@ -12,7 +12,7 @@ export default class Map extends Component {
   }
 
   componentDidMount() {
-    console.log(this)
+    // console.log(this)
   }
   
   componentDidUpdate() {

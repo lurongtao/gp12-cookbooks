@@ -14,6 +14,8 @@ class MapProvider extends React.PureComponent {
     this.setState({
       isShowMap: value
     })
+
+    localStorage.setItem('isShowMap', value)
   }
 
   render() {
@@ -25,6 +27,11 @@ class MapProvider extends React.PureComponent {
         {this.props.children}
       </Provider>
     )
+  }
+
+  componentDidMount() {
+    let isShowMap = JSON.parse(localStorage.getItem('isShowMap') || 'true')
+    this.changeStatus(isShowMap)
   }
 }
 
