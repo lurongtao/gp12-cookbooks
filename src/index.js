@@ -5,13 +5,14 @@ import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import { MapProvider } from './context/MapContext'
+import store from './store/'
+import { Provider } from 'react-redux'
 
 ReactDOM.render(
   <Router>
-    <MapProvider>
+    <Provider store={store}>
       <App />
-    </MapProvider>
+    </Provider>
   </Router>, 
   document.getElementById('root')
 );

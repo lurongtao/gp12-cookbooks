@@ -1,0 +1,1 @@
+export const CHANGE_VALUE = 'index/change_value'
