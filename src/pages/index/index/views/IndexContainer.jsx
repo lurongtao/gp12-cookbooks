@@ -9,7 +9,7 @@ import locationActive from 'images/location-active.png'
 import more from 'images/more.png'
 import moreActive from 'images/more-active.png'
 
-import Home from '../../home/Home'
+import { Home } from '../../home/'
 import Category from '../../category/Category'
 import Map from '../../map/Map'
 import { Profile } from '../../profile/'

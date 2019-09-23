@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Top10Container } from './StyledHome'
+import { Top10Container } from '../StyledHome'
 import http from 'utils/http'
 export default class Top10 extends Component {
   state = {

@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 import {
   HotCateContainer
-} from './StyledHome'
+} from '../StyledHome'
+
 import Grid from 'components/grid/Grid'
 
 import http from 'utils/http.js'
