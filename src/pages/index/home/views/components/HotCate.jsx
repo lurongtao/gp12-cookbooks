@@ -7,7 +7,8 @@ import {
 import Grid from 'components/grid/Grid'
 
 import http from 'utils/http.js'
-export default class HotCate extends Component {
+
+class HotCate extends Component {
   state = {
     hotCateList: []
   }
@@ -28,3 +29,5 @@ export default class HotCate extends Component {
     })
   }
 }
+
+export default HotCate

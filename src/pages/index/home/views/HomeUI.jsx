@@ -16,7 +16,7 @@ export default (props) => {
       <Swiper list={props.list}></Swiper>
       <Search outerBg="#f5f5f5" innerBg="#fff" hasBorder={true}></Search>
       <HotCate></HotCate>
-      <Top10></Top10>
+      <Top10 list={props.list}></Top10>
     </HomeContainer>
   )
 }

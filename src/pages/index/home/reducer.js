@@ -5,14 +5,10 @@ const defaultState = {
 }
 
 export default (state=defaultState, action) => {
-  console.log(action)
   switch(action.type) {
     case LOAD_DATA:
       return {
-        list: [
-          ...state.list,
-          ...action.data
-        ]
+        list: action.data
       }
     default:
       return state

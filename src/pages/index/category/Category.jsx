@@ -21,7 +21,7 @@ class Category extends PureComponent {
   static getDerivedStateFromProps(nextProps, prevState) {
     let pathname = nextProps.location.pathname
     return {
-      dir: pathname === '/category' ? 'left' : 'right'
+      dir: pathname === nextProps.match.path + '/category' ? 'left' : 'right'
     }
   }
 
@@ -30,6 +30,7 @@ class Category extends PureComponent {
   }
 
   render() {
+    let path = this.props.match.path
     return (
       <CateContainer>
         <header>
@@ -40,20 +41,22 @@ class Category extends PureComponent {
         </header>
         <Search outerBg="#fff" innerBg="#f5f5f5" hasBorder={false}></Search>
         <Switch>
-          <Route path="/category" component={Cate}></Route>
-          <Route path="/material" component={Material}></Route>
-          <Redirect from="/" exact to="/category"></Redirect>
+          <Route path={`${path}/category`} component={Cate}></Route>
+          <Route path={`${path}/material`} component={Material}></Route>
+          <Redirect from={`${path}`} exact to={`${path}/category`}></Redirect>
         </Switch>
       </CateContainer>
     )
   }
 
   handleClick = (dir) => {
+    let path = this.props.match.path
+
     this.setState({
       dir
     })
 
-    this.props.history.push(dir === 'left' ? '/category' : '/material')
+    this.props.history.push(dir === 'left' ? path + '/category' : path + '/material')
   }
 }
 

@@ -62,7 +62,7 @@ class Index extends PureComponent {
   constructor() {
     super()
     this.state = {
-      selectedTab: 'profile',
+      selectedTab: 'cookbook',
       hidden: false,
       fullScreen: true,
     }

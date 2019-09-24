@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
 import { Top10Container } from '../StyledHome'
-import http from 'utils/http'
-export default class Top10 extends Component {
-  state = {
-    top10List: []
-  }
 
+export default class Top10 extends Component {
   render() {
     return (
       <Top10Container>
         <div>精品好菜</div>
         <ul>
           {
-            this.state.top10List.map((value, index) => (
+            this.props.list.splice(0, 10).map((value, index) => (
               <li key={value.id}>
                 <dl>
                   <dt>
@@ -32,9 +28,6 @@ export default class Top10 extends Component {
   }
 
   async componentDidMount() {
-    let result = await http.get({url: '/api/swiper'})
-    this.setState({
-      top10List: result.data.slice(0, 10)
-    })
+    
   }
 }
