@@ -6,15 +6,18 @@ const ListContainer = styled.div `
   .am-navbar {
     background: #ee742f;
   }
+  .am-list-view-scrollview-content.am-list {
+    width: 100% !important;
+  }
 `
 
 const ListItems = styled.div `
-
+  
 ` 
 
 const ListItem = border({
   width: '0 0 1px 0',
-  comp: styled.li `
+  comp: styled.div `
     display: flex;
     padding: .1rem;
     background: #fff;

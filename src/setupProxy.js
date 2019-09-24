@@ -5,4 +5,8 @@ module.exports = function(app) {
     target: 'http://localhost:9000',
     changeOrigin: true,
   }))
+  app.use('/data', proxy({
+    target: 'http://localhost:9009',
+    changeOrigin: true,
+  }))
 }

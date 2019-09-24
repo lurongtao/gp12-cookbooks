@@ -12,6 +12,7 @@ import moreActive from 'images/more-active.png'
 import { Home } from '../../home/'
 import Category from '../../category/Category'
 import Map from '../../map/Map'
+// import Demo from '../../demo/Demo'
 import { Profile } from '../../profile/'
 
 import IndexUI from './IndexUI'

@@ -12,6 +12,10 @@ const mapDispatch = (dispatch) => {
   return {
     loadData() {
       dispatch(home.sagaLoadData())
+    },
+
+    loadMoreData(data) {
+      dispatch(home.sagaLoadMoreData(data))
     }
   }
 }

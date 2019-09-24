@@ -8,7 +8,7 @@ export default class Top10 extends Component {
         <div>精品好菜</div>
         <ul>
           {
-            this.props.list.splice(0, 10).map((value, index) => (
+            this.props.list.map((value, index) => (
               <li key={value.id}>
                 <dl>
                   <dt>

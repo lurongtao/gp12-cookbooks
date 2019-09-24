@@ -6,6 +6,15 @@
 - json-server
 - antd-mobile
 - CRA(create-react-app)/react-app-rewired/customize-cra
+- Context
+- Redux
+- React-redux
+- Redux-thunk
+- Redux-saga
+- Decorator(ES6 装饰器)
+- generator
+- styled-components
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
