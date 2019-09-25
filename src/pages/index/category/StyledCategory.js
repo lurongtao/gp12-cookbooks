@@ -58,7 +58,14 @@ const SlideContainer = border({
   comp: styled.ul ``
 })
 
+const CateBodyWrap = styled.div `
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+`
+
 export {
   CateContainer,
-  SlideContainer
+  SlideContainer,
+  CateBodyWrap
 }

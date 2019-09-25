@@ -18,6 +18,8 @@ import { Profile } from '../../profile/'
 import IndexUI from './IndexUI'
 import connect from './connect'
 
+import { withRouter } from 'react-router-dom'
+
 const mapData = {
   title: '美食地图',
   key: 'map',
@@ -91,8 +93,12 @@ class Index extends PureComponent {
     this.setState({
       selectedTab
     })
+    if (selectedTab === 'category') {
+      this.props.history.push('/index/category')
+    } else {
+      this.props.history.push('/index')
+    }
   }
-
 }
 
-export default Index
+export default withRouter(Index)

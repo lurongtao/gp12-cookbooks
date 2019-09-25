@@ -8,7 +8,7 @@ export default function Category(props) {
 
   return (
     <CategoryContainer>
-      <div id="menu_left">
+      <div id="menu_left" className="menu_left">
         <ul>
           {
             data && Object.keys(data).map((value, index) => {
@@ -27,7 +27,7 @@ export default function Category(props) {
           }
         </ul>
       </div>
-      <div id="menu_right">
+      <div id="menu_right" className="menu_right">
         <ul>
           {
             cateContent.map((value, index) => {

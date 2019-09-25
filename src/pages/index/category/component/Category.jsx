@@ -5,7 +5,11 @@ import Cate from 'components/category/Category'
 import http from 'utils/http'
 import BScroll from 'better-scroll'
 
-export default class Category extends Component {
+import animate from 'components/hoc/animate'
+
+import { withRouter } from 'react-router-dom'
+
+class Category extends Component {
   state = {
     defaultNav: '热门',
     cateList: {}
@@ -28,10 +32,10 @@ export default class Category extends Component {
       cateList: result.data.category
     })
 
-    new BScroll('#menu_left', {
+    new BScroll('.menu_left', {
       click: true
     })
-    new BScroll('#menu_right', {
+    new BScroll('.menu_right', {
       click: true
     })
   }
@@ -42,3 +46,5 @@ export default class Category extends Component {
     })
   }
 }
+
+export default withRouter(animate(Category))

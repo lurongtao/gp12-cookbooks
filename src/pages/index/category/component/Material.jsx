@@ -5,7 +5,11 @@ import Cate from 'components/category/Category'
 import http from 'utils/http'
 import BScroll from 'better-scroll'
 
-export default class Material extends Component {
+import animate from 'components/hoc/animate'
+
+import { withRouter } from 'react-router-dom'
+
+class Material extends Component {
   state = {
     defaultNav: '肉类',
     cateList: {}
@@ -28,10 +32,10 @@ export default class Material extends Component {
       cateList: result.data.material
     })
 
-    new BScroll('#menu_left', {
+    new BScroll('.menu_left', {
       click: true
     })
-    new BScroll('#menu_right', {
+    new BScroll('.menu_right', {
       click: true
     })
   }
@@ -42,3 +46,5 @@ export default class Material extends Component {
     })
   }
 }
+
+export default withRouter(animate(Material))

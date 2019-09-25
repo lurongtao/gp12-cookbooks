@@ -5,7 +5,11 @@ import border from 'components/styled/border'
 const CategoryContainer = border({
   width: '1px 0 0 0',
   comp: styled.div `
-    flex: 1;
+    height: 100%;
+    width: 100%;
+    position: absolute !important;
+    left: 0;
+    top: 0;
     display: flex;
     overflow: hidden;
     >div:first-child {

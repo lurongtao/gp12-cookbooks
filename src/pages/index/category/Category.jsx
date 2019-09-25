@@ -2,13 +2,13 @@ import React, { PureComponent } from 'react'
 
 import {
   CateContainer,
-  SlideContainer
+  SlideContainer,
+  CateBodyWrap
 } from './StyledCategory'
 
 import {
   Route,
   withRouter,
-  Switch,
   Redirect
 } from 'react-router-dom'
 
@@ -40,11 +40,11 @@ class Category extends PureComponent {
           </SlideContainer>
         </header>
         <Search outerBg="#fff" innerBg="#f5f5f5" hasBorder={false}></Search>
-        <Switch>
-          <Route path={`${path}/category`} component={Cate}></Route>
-          <Route path={`${path}/material`} component={Material}></Route>
+        <CateBodyWrap>
+          <Route path={`${path}/category`} children={(props) => <Cate></Cate>}></Route>
+          <Route path={`${path}/material`} children={(props) => <Material></Material>}></Route>
           <Redirect from={`${path}`} exact to={`${path}/category`}></Redirect>
-        </Switch>
+        </CateBodyWrap>
       </CateContainer>
     )
   }
@@ -56,7 +56,7 @@ class Category extends PureComponent {
       dir
     })
 
-    this.props.history.push(dir === 'left' ? path + '/category' : path + '/material')
+    this.props.history.push(dir === 'left' ? path + '/category' : path + '/material', {dir})
   }
 }
 
