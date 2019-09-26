@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { useState, useCallback } from 'react'
 
 import {
   CateContainer,
@@ -17,47 +17,31 @@ import Material from './component/Material'
 
 import Search from 'components/search/Search'
 
-class Category extends PureComponent {
-  static getDerivedStateFromProps(nextProps, prevState) {
-    let pathname = nextProps.location.pathname
-    return {
-      dir: pathname === nextProps.match.path + '/category' ? 'left' : 'right'
-    }
-  }
+function Category (props) {
+  let [dir, setDir] = useState('left')
+  let path = props.match.path
 
-  state = {
-    dir: 'left'
-  }
+  const handleClick = useCallback((dir) => {
+    setDir(dir)
+    props.history.push(dir === 'left' ? path + '/category' : path + '/material', {dir})
+  }, [path, props])
 
-  render() {
-    let path = this.props.match.path
-    return (
-      <CateContainer>
-        <header>
-          <SlideContainer className={this.state.dir}>
-            <li onClick={() => this.handleClick('left')} className={this.state.dir === 'left' ? 'active' : ''}>分类</li>
-            <li onClick={() => this.handleClick('right')} className={this.state.dir === 'right' ? 'active' : ''}>食材</li>
-          </SlideContainer>
-        </header>
-        <Search outerBg="#fff" innerBg="#f5f5f5" hasBorder={false}></Search>
-        <CateBodyWrap>
-          <Route path={`${path}/category`} children={(props) => <Cate></Cate>}></Route>
-          <Route path={`${path}/material`} children={(props) => <Material></Material>}></Route>
-          <Redirect from={`${path}`} exact to={`${path}/category`}></Redirect>
-        </CateBodyWrap>
-      </CateContainer>
-    )
-  }
-
-  handleClick = (dir) => {
-    let path = this.props.match.path
-
-    this.setState({
-      dir
-    })
-
-    this.props.history.push(dir === 'left' ? path + '/category' : path + '/material', {dir})
-  }
+  return (
+    <CateContainer>
+      <header>
+        <SlideContainer className={dir}>
+          <li onClick={() => handleClick('left')} className={dir === 'left' ? 'active' : ''}>分类</li>
+          <li onClick={() => handleClick('right')} className={dir === 'right' ? 'active' : ''}>食材</li>
+        </SlideContainer>
+      </header>
+      <Search outerBg="#fff" innerBg="#f5f5f5" hasBorder={false}></Search>
+      <CateBodyWrap>
+        <Route path={`${path}/category`} children={(props) => <Cate></Cate>}></Route>
+        <Route path={`${path}/material`} children={(props) => <Material></Material>}></Route>
+        <Redirect from={`${path}`} exact to={`${path}/category`}></Redirect>
+      </CateBodyWrap>
+    </CateContainer>
+  )
 }
 
 export default withRouter(Category)

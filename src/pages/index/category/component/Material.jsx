@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useCallback, useLayoutEffect } from 'react'
 
 import Cate from 'components/category/Category'
 
@@ -9,42 +9,45 @@ import animate from 'components/hoc/animate'
 
 import { withRouter } from 'react-router-dom'
 
-class Material extends Component {
-  state = {
+function Material () {
+  let [state, setState] = useState({
     defaultNav: '肉类',
     cateList: {}
-  }
-
-  render() {
-    return <Cate 
-      data={this.state.cateList} 
-      defaultNav={this.state.defaultNav}
-      onNavClick={this.handleClick}
-    ></Cate>
-  }
-
-  async componentDidMount() {
-    let result = await http.get({
-      url: '/api/category'
-    })
-
-    this.setState({
-      cateList: result.data.material
-    })
-
-    new BScroll('.menu_left', {
-      click: true
-    })
-    new BScroll('.menu_right', {
-      click: true
-    })
-  }
-
-  handleClick = (value) => {
-    this.setState({
+  })
+  
+  const handleClick = useCallback((value) => {
+    setState({
+      ...state,
       defaultNav: value
     })
-  }
+  }, [state])
+
+  useLayoutEffect(() => {
+    (async () => {
+      let result = await http.get({
+        url: '/api/category'
+      })
+  
+      setState((state) => ({
+        ...state,
+        cateList: result.data.material
+      }))
+
+      new BScroll('.menu_left', {
+        click: true
+      })
+  
+      new BScroll('.menu_right', {
+        click: true
+      })
+    })()
+  }, [])
+
+  return <Cate 
+    data={state.cateList} 
+    defaultNav={state.defaultNav}
+    onNavClick={handleClick}
+  ></Cate>
 }
 
 export default withRouter(animate(Material))
