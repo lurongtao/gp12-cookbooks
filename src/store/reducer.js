@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 
 import { reducer as index } from 'pages/index/index/'
 import { reducer as home } from 'pages/index/home/'

@@ -1,22 +1,16 @@
 import { LOAD_DATA, LOAD_MORE_DATA } from './actionTypes'
+import { Map } from 'immutable'
 
-const defaultState = {
+const defaultState = Map({
   list: []
-}
+})
 
 export default (state=defaultState, action) => {
   switch(action.type) {
     case LOAD_DATA:
-      return {
-        list: action.data
-      }
+      return state.set('list', action.data)
     case LOAD_MORE_DATA:
-      return {
-        list: [
-          ...state.list,
-          ...action.data
-        ]
-      }
+      return state.set('list', state.get('list').concat(action.data))
     default:
       return state
   }

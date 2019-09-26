@@ -4,7 +4,7 @@ import { homeActionCreator as home } from 'pages/index/home/'
 
 const mapState = (state) => {
   return {
-    list: state.home.list
+    list: state.getIn(['home', 'list'])
   }
 }
 

@@ -4,7 +4,7 @@ import { sagaLoadData } from '../actionCreator'
 
 const mapState = (state) => {
   return {
-    list: state.home.list
+    list: state.getIn(['home', 'list'])
   }
 }
 

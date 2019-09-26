@@ -3,7 +3,7 @@ import { IndexActionCreator } from 'pages/index/index/'
 
 const mapState = (state) => {
   return {
-    isShowMap: state.index.isShowMap
+    isShowMap: state.getIn(['index', 'isShowMap'])
   }
 }
 
