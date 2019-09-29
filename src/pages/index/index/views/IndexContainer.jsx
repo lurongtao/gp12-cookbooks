@@ -62,12 +62,17 @@ const tabList = [
 
 @connect
 class Index extends PureComponent {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      selectedTab: 'category',
+      selectedTab: 'cookbooks',
       hidden: false,
       fullScreen: true,
+    }
+
+    let { location, history } = this.props
+    if (location.pathname !== '/index') {
+      history.push(location.pathname)
     }
   }
 
